@@ -3,9 +3,6 @@ import 'package:provider/provider.dart';
 import 'package:flutter/material.dart';
 import 'dart:math';
 
-
-enum GamePieceTurn { READY, COMPLETE }
-
 class GamePieceModel extends ChangeNotifier {
 
 	GamePieceModel({ this.value, this.position }) {
@@ -47,19 +44,18 @@ class GamePieceModel extends ChangeNotifier {
 		this.position = to;
 		notifyListeners();
 	}
-
-	GamePieceTurn _turn = GamePieceTurn.READY;
-	GamePieceTurn get turn => _turn;
-
-	void ready() => _turn = GamePieceTurn.READY;
-	void complete() => _turn = GamePieceTurn.COMPLETE;
 }
 
 class GamePieceView extends AnimatedWidget {
 
 	GamePieceView({Key key, this.model, controller}) :
-	 	x = Tween<double>( begin: model.prev.x.toDouble(),  end: model.position.x.toDouble(), ).animate( CurvedAnimation( parent: controller, curve: Interval( 0.0, 0.100,  curve: Curves.ease, ))),
-		y = Tween<double>( begin: model.prev.y.toDouble(),  end: model.position.y.toDouble(), ).animate( CurvedAnimation( parent: controller, curve: Interval( 0.0, 0.100,  curve: Curves.ease, ))),
+	
+	 	x = Tween<double>( begin: model.prev.x.toDouble(),  end: model.position.x.toDouble(), )
+		 	.animate( CurvedAnimation( parent: controller, curve: Interval( 0.0, 0.100,  curve: Curves.ease, ))),
+
+		y = Tween<double>( begin: model.prev.y.toDouble(),  end: model.position.y.toDouble(), )
+			.animate( CurvedAnimation( parent: controller, curve: Interval( 0.0, 0.100,  curve: Curves.ease, ))),
+
 		super(key: key, listenable: controller);
 
 	final GamePieceModel model;

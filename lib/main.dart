@@ -8,10 +8,10 @@ void main() {
 
 	WidgetsFlutterBinding.ensureInitialized();
 	SystemChrome.setPreferredOrientations([DeviceOrientation.portraitUp]);
-	runApp(MyApp());
+	runApp(Game());
 }
 
-class MyApp extends StatelessWidget {
+class Game extends StatelessWidget {
 
 	final String _title = "Flutter Puzzle Game Demo";
 

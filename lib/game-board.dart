@@ -23,7 +23,10 @@ class _GameBoardState extends State<GameBoard> {
 	void onGesture(DragUpdateDetails ev) => 
 		dragOffset = Offset((dragOffset.dx + ev.delta.dx) / 2, (dragOffset.dy + ev.delta.dy) / 2);
 	
-	void onPanEnd(DragEndDetails ev) { Controller.on(dragOffset); }
+	void onPanEnd(DragEndDetails ev) { 
+		Controller.on(dragOffset);
+		dragOffset = Offset(0, 0);
+	}
 
 	@override
 	void initState() {
